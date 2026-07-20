@@ -450,7 +450,7 @@ svg { width: 20px; height: 20px; flex-shrink: 0; }
   .hero-ctas { gap: 8px; margin-top: 4px; }
   .btn-outline-hero { padding: 11px 20px; font-size: 0.82rem; }
 
-  .hero-media video, .hero-media img { object-position: 5% center; }
+  .hero-media video, .hero-media img { object-position: 45% center; }
 }
 
 @media (max-width: 400px) {
