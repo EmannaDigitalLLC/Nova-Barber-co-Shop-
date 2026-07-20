@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nova-barber",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/davidchatla/Desktop/Nova Barber Shop/.claude/serve.py"],
+      "port": 8743,
+      "autoPort": true
+    }
+  ]
+}
