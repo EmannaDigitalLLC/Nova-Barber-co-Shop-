@@ -1,6 +1,28 @@
 (function () {
   "use strict";
 
+  // Preloader: show for a minimum time so it never just flashes, then fade out
+  var preloader = document.getElementById("preloader");
+  if (preloader) {
+    var preloaderStart = Date.now();
+    var minDisplay = 700;
+
+    var hidePreloader = function () {
+      var elapsed = Date.now() - preloaderStart;
+      var remaining = Math.max(0, minDisplay - elapsed);
+      setTimeout(function () {
+        preloader.classList.add("is-hidden");
+        setTimeout(function () { preloader.remove(); }, 500);
+      }, remaining);
+    };
+
+    if (document.readyState === "complete") {
+      hidePreloader();
+    } else {
+      window.addEventListener("load", hidePreloader);
+    }
+  }
+
   // Footer year
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
