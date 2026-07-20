@@ -82,10 +82,10 @@
   border-radius: 6px;
   background-image: repeating-linear-gradient(
     -45deg,
-    #d8342c 0px, #d8342c 10px,
-    #f5f2ea 10px, #f5f2ea 20px,
-    #2d4f9e 20px, #2d4f9e 30px,
-    #f5f2ea 30px, #f5f2ea 40px
+    var(--gold) 0px, var(--gold) 10px,
+    var(--white) 10px 20px,
+    var(--black-soft) 20px 30px,
+    var(--white) 30px 40px
   );
   background-size: 100% 40px;
   animation: pole-spin 800ms linear infinite;
