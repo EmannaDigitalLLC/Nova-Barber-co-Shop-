@@ -23,6 +23,24 @@
     }
   }
 
+  // Hero video: some mobile browsers (iOS Reduce Motion, low-power/data-saver
+  // modes) ignore the passive autoplay attribute, so also trigger it from JS
+  // and retry on first user interaction as a fallback.
+  var heroVideo = document.querySelector(".hero-media video");
+  if (heroVideo) {
+    var tryPlayHeroVideo = function () {
+      var playPromise = heroVideo.play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () { /* will retry on interaction below */ });
+      }
+    };
+
+    tryPlayHeroVideo();
+    document.addEventListener("touchstart", tryPlayHeroVideo, { once: true, passive: true });
+    document.addEventListener("scroll", tryPlayHeroVideo, { once: true, passive: true });
+    heroVideo.addEventListener("loadeddata", tryPlayHeroVideo, { once: true });
+  }
+
   // Footer year
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
