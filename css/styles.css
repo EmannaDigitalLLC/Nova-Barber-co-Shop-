@@ -737,9 +737,13 @@ svg { width: 20px; height: 20px; flex-shrink: 0; }
 .barbers { background: var(--black-soft); }
 
 .barber-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-3);
+}
+.barber-card {
+  flex: 0 1 calc(50% - var(--space-3) / 2);
 }
 
 .barber-card {
@@ -839,7 +843,7 @@ svg { width: 20px; height: 20px; flex-shrink: 0; }
 .barber-card:hover h3 { color: var(--gold); }
 
 @media (min-width: 700px) {
-  .barber-grid { grid-template-columns: repeat(4, 1fr); }
+  .barber-card { flex-basis: calc(25% - (var(--space-3) * 3 / 4)); }
 }
 
 /* =========================================================
