@@ -116,4 +116,18 @@
   revealOnScroll(".gallery-item");
   revealOnScroll(".team-teaser-content");
   revealOnScroll(".service-row");
+
+  // GA4: fire a "book_now" event whenever a visitor clicks through to Booksy,
+  // so booking click-throughs show up as a conversion in Analytics.
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest('a[href*="booksy.com"]');
+    if (!link || typeof window.gtag !== "function") return;
+
+    var label = (link.getAttribute("aria-label") || link.textContent || "").trim().replace(/\s+/g, " ");
+    gtag("event", "book_now", {
+      link_text: label.slice(0, 100),
+      link_url: link.href,
+      page_location: window.location.pathname
+    });
+  });
 })();
